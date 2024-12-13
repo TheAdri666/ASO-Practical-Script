@@ -55,8 +55,10 @@ scheduleCollection()
     return
   fi
 
-  mkdir -p "$destination"
-  log_message "Created destination directory: $destination"
+  if [ ! -d "$destination" ]; then
+    mkdir -p "$destination"
+    log_message "Created destination directory: $destination"
+  fi
 
   CRON_TIME="0 8 $(date --date='tomorrow' +\%d) $(date --date='tomorrow' +\%m) *"
   cron_job="$CRON_TIME $(pwd)/store-prac.sh $course $origin $destination >> $(pwd)/$LOGFILE 2>&1"
