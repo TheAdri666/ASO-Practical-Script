@@ -78,7 +78,7 @@ packAssignments()
     return
   fi
 
-  archive_name="$directory/$course-$(date '+%y%m%d').tgz"
+  archive_name="$(pwd)/$(date '+%y%m%d').tgz"
   tar -czf "$archive_name" -C "$directory" .
 
   if [ $? -eq 0 ]; then
@@ -93,7 +93,7 @@ packAssignments()
 getArchiveInfo()
 {
   read -p "Course: " course
-  archive_name="$(pwd)/$course-$(date '+%y%m%d').tgz"
+  archive_name="$(pwd)/$(course)-$(date '+%y%m%d').tgz"
 
   if [ -f "$archive_name" ]; then
     size=$(stat -c%s "$archive_name")
