@@ -58,7 +58,7 @@ scheduleCollection()
   mkdir -p "$destination"
   log_message "Created destination directory: $destination"
 
-  CRON_TIME="0 8 * * *"
+  CRON_TIME="0 8 $(date --date='tomorrow' +\%d) $(date --date='tomorrow' +\%m) *"
   cron_job="$CRON_TIME $(pwd)/store-prac.sh $course $origin $destination >> $LOGFILE 2>&1"
 
   (crontab -l 2>/dev/null; echo "$cron_job") | crontab -
