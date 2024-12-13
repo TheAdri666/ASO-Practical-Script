@@ -93,7 +93,7 @@ packAssignments()
 getArchiveInfo()
 {
   read -p "Course: " course
-  archive_name="$(pwd)/$(course)-$(date '+%y%m%d').tgz"
+  archive_name="$(pwd)/${course}-$(date '+%y%m%d').tgz"
 
   if [ -f "$archive_name" ]; then
     size=$(stat -c%s "$archive_name")
