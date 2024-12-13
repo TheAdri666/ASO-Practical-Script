@@ -97,7 +97,7 @@ getArchiveInfo()
 
   if [ -f "$archive_name" ]; then
     size=$(stat -c%s "$archive_name")
-    date=$(stat -c%y "$archive_name")
+    date=$(stat -c%y "$archive_name" | date "+%Y-%m-%d %H:%M:%S" -d)
     echo "The file $archive_name is $size bytes and was created on $date."
     log_message "Displayed info for archive $archive_name"
   else
