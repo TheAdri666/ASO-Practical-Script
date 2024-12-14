@@ -27,8 +27,10 @@ if [ ! -d "$origin" ]; then
 fi
 
 # Create destination directory if it doesn't exist
-mkdir -p "$destination"
-log_message "Created destination directory: $destination"
+if [ ! -d "$destination" ]; then
+  mkdir -p "$destination"
+  log_message "Created destination directory: $destination"
+fi
 
 # Iterate through student directories and copy prac.sh files
 for student_dir in "$origin"/*; do
