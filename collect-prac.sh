@@ -60,6 +60,8 @@ scheduleCollection()
     log_message "Created destination directory: $destination"
   fi
 
+  # Test cron time that executes once per minute, leave commented unless testing.
+  # CRON_TIME="* * * * *"
   CRON_TIME="0 8 $(date --date='tomorrow' +\%d) $(date --date='tomorrow' +\%m) *"
   cron_job="$CRON_TIME $(pwd)/store-prac.sh $course $origin $destination >> $(pwd)/$(basename $LOGFILE) 2>&1"
 
