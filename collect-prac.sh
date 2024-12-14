@@ -1,6 +1,6 @@
 #!/bin/bash
 
-LOGFILE="prac.log"
+LOGFILE="$(dirname "$0")/prac.log"
 
 # Function to log messages
 log_message() {
