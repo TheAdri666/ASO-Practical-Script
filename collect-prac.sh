@@ -61,7 +61,7 @@ scheduleCollection()
   fi
 
   CRON_TIME="0 8 $(date --date='tomorrow' +\%d) $(date --date='tomorrow' +\%m) *"
-  cron_job="$CRON_TIME $(pwd)/store-prac.sh $course $origin $destination >> $(pwd)/$LOGFILE 2>&1"
+  cron_job="$CRON_TIME $(pwd)/store-prac.sh $course $origin $destination >> $(pwd)/$(basename $LOGFILE) 2>&1"
 
   (crontab -l 2>/dev/null; echo "$cron_job") | crontab -
   log_message "Scheduled cron job for course $course at $CRON_TIME"
