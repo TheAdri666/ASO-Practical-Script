@@ -82,7 +82,7 @@ packAssignments()
     return
   fi
 
-  archive_name="$(pwd)/$(date '+%y%m%d').tgz"
+  archive_name="$(pwd)/${course}-$(date '+%y%m%d').tgz"
   tar -czf "$archive_name" -C "$directory" .
 
   if [ $? -eq 0 ]; then
